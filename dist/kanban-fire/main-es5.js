@@ -17,7 +17,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /home/ftaylor92/Desktop/angular-rest-firebase/src/main.ts */
+      /*! /home/ftaylor92/src/firebase/angular-rest-firebase/src/main.ts */
       "zUnb");
       /***/
     },
@@ -618,15 +618,19 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "fXoL");
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/common/http */
+      "tk/3");
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/common/http */
-      "tk/3");
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+
+      var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+        'Content-Type': 'application/json; charset=utf-8'
+      });
 
       var BookService = /*#__PURE__*/function () {
         function BookService(http) {
@@ -639,17 +643,20 @@
         _createClass(BookService, [{
           key: "getBooks",
           value: function getBooks() {
-            return this.http.get("".concat(this.url));
+            return this.http.get(this.url, {
+              headers: headers
+            });
           }
         }, {
           key: "addBook",
           value: function addBook(book) {
-            return this.http.post("".concat(this.url), book);
+            return this.http.post(this.url, book);
           }
         }, {
           key: "deleteBook",
           value: function deleteBook(id) {
-            return this.http["delete"]("".concat(this.url, "/").concat(id), {
+            return this.http["delete"](this.url + '/' + id, {
+              headers: headers,
               responseType: 'text'
             });
           }
@@ -659,10 +666,10 @@
       }();
 
       BookService.ɵfac = function BookService_Factory(t) {
-        return new (t || BookService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]));
+        return new (t || BookService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]));
       };
 
-      BookService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      BookService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: BookService,
         factory: BookService.ɵfac,
         providedIn: 'root'
@@ -944,11 +951,18 @@
 
             this.bookService.getBooks().subscribe(function (data) {
               _this2.books = data;
-            });
+            }); //this.books.push(this.bookService.getBooks());
           }
         }, {
           key: "addBook",
-          value: function addBook() {}
+          value: function addBook(b) {
+            this.bookService.addBook(b);
+          }
+        }, {
+          key: "deleteBook",
+          value: function deleteBook(x) {
+            this.bookService.deleteBook(x ? x : 4);
+          }
         }, {
           key: "ngOnInit",
           value: function ngOnInit() {
@@ -1035,7 +1049,7 @@
       AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
         type: AppComponent,
         selectors: [["app-root"]],
-        decls: 59,
+        decls: 63,
         vars: 40,
         consts: [["color", "primary"], [1, "content-wrapper"], ["mat-button", "", 3, "click"], [1, "container-wrapper"], [1, "container"], ["cdkDropList", "", "id", "todo", 1, "list", 3, "cdkDropListData", "cdkDropListConnectedTo", "cdkDropListDropped"], ["todoList", "cdkDropList"], ["class", "empty-label", 4, "ngIf"], ["cdkDrag", "", 3, "task", "edit", 4, "ngFor", "ngForOf"], ["cdkDropList", "", "id", "inProgress", 1, "list", 3, "cdkDropListData", "cdkDropListConnectedTo", "cdkDropListDropped"], ["inProgressList", "cdkDropList"], ["cdkDropList", "", "id", "done", 1, "list", 3, "cdkDropListData", "cdkDropListConnectedTo", "cdkDropListDropped"], ["doneList", "cdkDropList"], ["align", "center"], [1, "table", 2, "width", "80%"], [4, "ngFor", "ngForOf"], [3, "click"], [1, "empty-label"], ["cdkDrag", "", 3, "task", "edit"]],
         template: function AppComponent_Template(rf, ctx) {
@@ -1211,10 +1225,34 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](56, "button", 16);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function AppComponent_Template_button_click_56_listener() {
-              return ctx.addBook();
+              return ctx.addBook({
+                "title": "avv",
+                "author": "bgt",
+                "id": 4
+              });
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](57, " Add Book");
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](57, "Add Book");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](58, "button", 16);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function AppComponent_Template_button_click_58_listener() {
+              return ctx.getBooks();
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](59, "Get Books");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](60, "button", 16);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function AppComponent_Template_button_click_60_listener() {
+              return ctx.deleteBook();
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](61, "Del Books");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 
@@ -1222,7 +1260,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](58, "router-outlet");
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](62, "router-outlet");
           }
 
           if (rf & 2) {

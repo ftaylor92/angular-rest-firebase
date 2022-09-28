@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ftaylor92/Desktop/angular-rest-firebase/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /home/ftaylor92/src/firebase/angular-rest-firebase/src/polyfills.ts */"hN/g");
 
 
 /***/ }),

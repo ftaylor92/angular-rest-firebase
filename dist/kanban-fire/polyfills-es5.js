@@ -499,7 +499,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! /home/ftaylor92/Desktop/angular-rest-firebase/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
+      /*! /home/ftaylor92/src/firebase/angular-rest-firebase/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
       "voQr");
 
       __webpack_require__(
@@ -507,7 +507,7 @@
       "R0gw");
 
       module.exports = __webpack_require__(
-      /*! /home/ftaylor92/Desktop/angular-rest-firebase/src/polyfills.ts */
+      /*! /home/ftaylor92/src/firebase/angular-rest-firebase/src/polyfills.ts */
       "hN/g");
       /***/
     },
