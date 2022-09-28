@@ -97,7 +97,9 @@
 </div>
 <div>
   <p>
-    <button (click)="addBook()"> Add Book</button>
+    <button (click)="addBook({ 'title': 'avv', 'author': 'bgt', 'id': 4 })">Add Book</button>
+    <button (click)="getBooks()">Get Books</button>
+    <button (click)="deleteBook()">Del Books</button>
   </p>
 </div>
 <router-outlet></router-outlet>

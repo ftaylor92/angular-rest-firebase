@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+
+const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,14 @@ export class BookService {
   }
 
   getBooks(): Observable<any> {
-    return this.http.get(`${this.url}`);
+    return this.http.get(this.url, {headers: headers});
   }
 
   addBook(book: Object): Observable<Object> {
-    return this.http.post(`${this.url}`, book);
+    return this.http.post(this.url, book);
   }
 
   deleteBook(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`, {responseType: 'text'});
+    return this.http.delete(this.url + '/' + id, {headers: headers, responseType: 'text'});
   }
 }

@@ -36,9 +36,15 @@ export class AppComponent {
     this.bookService.getBooks().subscribe(data => {
       this.books = data;
     });
+    //this.books.push(this.bookService.getBooks());
   }
 
-  addBook(): void {
+  addBook(b : Book): void {
+    this.bookService.addBook(b);
+  }
+
+  deleteBook(x? : number) {
+    this.bookService.deleteBook(x? x:4);
   }
 
   ngOnInit(): void {
