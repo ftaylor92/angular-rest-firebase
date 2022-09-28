@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class BookService {
 
-  private url = 'http://openshift-spring-boot-services-git-ftaylor92-dev.apps.sandbox.x8i5.p1.openshiftapps.com/books';
+  private url = 'https://springboot-webservice-simplest-git-ftaylor92-dev.apps.sandbox.x8i5.p1.openshiftapps.com/books';
 
   constructor(private http: HttpClient) {
   }
